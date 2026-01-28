@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Jakob Reinwald</title>
+</head>
+
+<body>
+
+	<div id="visitor-prompt">
+		<form id="visitor-form" target="log-frame" method="POST"
+			action="https://docs.google.com/forms/d/e/1FAIpQLSdRPABayAK00Rafw21NI9N1O71ePzEJqWVha1KdSzegQyKTRA/formResponse"
+			onsubmit="return handleSubmit(event);">
+
+			<p>Please enter your name and/or reason for visiting (it's just going to a private google form), or press enter to
+				visit anonymously. </p>
+
+			<input type="text" id="visitor-input" name="entry.1219204975" placeholder="e.g. your friend Arvin">
+
+		</form>
+	</div>
+
+	<iframe name="log-frame" style="display: none;"></iframe>
+
+
+	<div id="main-content" style="display: none;">
+
+		<h1>Jakob Maximilian Reinwald</h1>
+		<div>
+			<ul>
+				<li>
+					<a href="Jakob-Reinwald-Resume-6.1.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+				</li>
+				<li>
+					<a href="https://linkedin.com/in/jakob-reinwald" target="_blank" rel="noopener noreferrer">LinkedIn</a>:
+					jakob-reinwald
+				</li>
+				<li>
+					<a href="https://github.com/jakobreinwald" target="_blank" rel="noopener noreferrer">GitHub</a>: jakobreinwald
+				</li>
+				<li>
+					<a href="https://music.apple.com/profile/jakob_reinwald" target="_blank" rel="noopener noreferrer">Apple
+						Music</a>: jakob_reinwald
+				</li>
+				<li>
+					<a href="https://jakobreinwald.github.io/archived_2022_portfolio" target="_blank"
+						rel="noopener noreferrer">Archived 2022 Portfolio</a>: jakobreinwald.github.io/archived_2022_portfolio
+				</li>
+				<li>
+					<a href="https://github.com/jakobreinwald/jakobreinwald.github.io" target="_blank"
+						rel="noopener noreferrer">Source Code for this Website</a>: github.com/jakobreinwald/jakobreinwald.github.io
+				</li>
+				<!-- <li>
+					<a href="https://www.youtube.com/@jakobreinwald" target="_blank" rel="noopener noreferrer">YouTube (for music
+						that isn't on streaming)</a>: jakobreinwald
+				</li>
+				<li>
+					<a href="https://x.com/jakob_reinwald" target="_blank" rel="noopener noreferrer">Twitter</a>: jakob_reinwald
+				</li>
+				<li>
+					<a href="https://instagram.com/jakob.reinwald_" target="_blank" rel="noopener noreferrer">Instagram</a>:
+					jakob.reinwald_
+				</li> -->
+			</ul>
+			<h2>Contact</h2>
+			<ul>
+				<li>jakob [dot] reinwald [at] yahoo [dot] com</li>
+				<li>jakobmreinwald [at] gmail [dot] com</li>
+				<li>jakobreinwald [at] cs [dot] ucla [dot] edu</li>
+			</ul>
+			<h2>Outside of school/work:</h2>
+			<ul>
+				<li><strong>health/fitness</strong></li>
+				<ul>
+					<li>running and walking, outdoor cardio like <strong>basketball</strong>
+					</li>
+					<li>nutrition and recovery, stretching, lifting
+					</li>
+				</ul>
+				<li>Spending time with family and friends in my home city (San Jose) and around UCLA</li>
+				<li>listening to music</li>
+				<li>cats and animals</li>
+				<li>trying new things!</li>
+				<li>twitter</li>
+				<li>podcasts, social media</li>
+			</ul>
+		</div>
+		<div style="text-align: center; margin-top: 40px;">
+
+			<div style="display: inline-block; vertical-align: top;">
+				<img src="images/cats.jpg" alt="Photo"
+					style="max-width: 300px; height: auto; border-radius: 8px; display: block; margin-bottom: 10px;">
+				<img src="images/tree.jpeg" alt="Photo"
+					style="max-width: 300px; height: auto; border-radius: 8px; display: block;">
+			</div>
+
+			<div style="display: inline-block; vertical-align: top; margin-left: 20px;">
+				<img src="images/austria_2023.jpg" alt="Photo" style="max-width: 350px; height: auto; border-radius: 8px;">
+			</div>
+
+		</div>
+		<div style="text-align: center; margin-top: 40px;">
+
+			<div style="display: inline-block; vertical-align: top;">
+				<img src="images/clouds_rest_landscape.png" alt="Photo"
+					style="max-width: 300px; height: auto; border-radius: 8px; display: block; margin-bottom: 10px;">
+				<img src="images/giants.jpg" alt="Photo"
+					style="max-width: 300px; height: auto; border-radius: 8px; display: block;">
+			</div>
+
+			<div style="display: inline-block; vertical-align: top; margin-left: 20px;">
+				<img src="images/handstand.png" alt="Photo" style="max-width: 350px; height: auto; border-radius: 8px;">
+			</div>
+
+		</div>
+	</div>
+
+	<script>
+		const promptDiv = document.getElementById('visitor-prompt');
+		const mainContent = document.getElementById('main-content');
+		const visitorInput = document.getElementById('visitor-input');
+		const visitorForm = document.getElementById('visitor-form');
+
+		function revealSite() {
+			promptDiv.style.display = 'none';
+			mainContent.style.display = 'block';
+			window.scrollTo(0, 0);
+		}
+
+		function handleSubmit(event) {
+			// Set input value to "Anonymous Visit" if left empty
+			if (visitorInput.value.trim() === "") {
+				visitorInput.value = "Anonymous Visit";
+			}
+			revealSite();
+			setTimeout(() => {
+				visitorForm.submit();
+			}, 100);
+			return false;
+		}
+
+		window.onload = function () {
+			visitorInput.focus();
+		};
+
+		document.addEventListener('keydown', function (event) {
+			if (mainContent.style.display === 'none' && event.key === 'Enter') {
+				event.preventDefault();
+				handleSubmit();
+			}
+		});
+
+	</script>
+
+</body>
+
+</html>
